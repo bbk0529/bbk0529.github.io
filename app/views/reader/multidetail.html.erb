@@ -1,0 +1,10 @@
+<%= render 'watson' %>
+<%= render 'header' %>
+
+<% @emails.each do |email| %>
+	<%=email.id%>
+	<% @email = email %>
+	<%= render 'detail'%>
+<% end %>
+
+<%= render 'detailfoot'%>

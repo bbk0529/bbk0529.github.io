@@ -1,0 +1,47 @@
+<%= render 'search_script' %>
+<%= render 'header' %>
+    <div class="row">
+	<table class="table table-hover">
+	   <thead>
+		<tr>
+	    	<th !class="col-md-1 col-sm-1 col-xs-1"><input type="checkbox" id="chkall" ></th>
+	    	<th !class="col-md-1 col-sm-1 col-xs-1">#</th>
+			<th !class="col-md-1 col-sm-1 col-xs-1">BY</th>
+			<th !class="col-md-4 col-sm-4 col-xs-4">SUBJECT</th>
+            <th !class="col-md-2 col-sm-2 col-xs-2">DATE</th>
+			<!-- <th class="col-md-1 col-sm-1 col-xs-1">WORDS</th> -->
+            <th> DEL</th>
+		</tr>
+		</thead>
+		<tbody>
+
+     <% @emails.each do |email| %>
+		 <tr class="chkclass">
+			<td><input type="checkbox" id="chk" value="<%=email.id%>"></td>
+			<td onclick="window.location.assign('/reader/detail?id=<%=email.id%>');"><%=email.id%></td>
+			<td onclick="window.location.assign('/reader/detail?id=<%=email.id%>');"><%=email.sender%></td>
+			<td onclick="window.location.assign('/reader/detail?id=<%=email.id%>');"><%=email.subject%></td>
+            <td onclick="window.location.assign('/reader/detail?id=<%=email.id%>');"><%=email.date%></td>
+			<!-- <td onclick="window.location.assign('/reader/detail?id=<%=email.id%>');"><%=email.wordcount%></td> -->
+            <td><a href="/reader/destroy/<%=email.id%>"> [x]</a> </td>
+		</tr>
+    <% end %>
+		</tbody>
+	</table>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-3 col-xs-1"></div>
+		<div class="col-sm-6 col-xs-6"><input class="form-control" id="keyword" name="keyword" type="text" !autofocus/></div>
+		<div class="col-sm-1 col-xs-1"><button id="search" class="btn btn-default">SEARCH </button></div>
+	</div>
+
+	<br/><br/>
+	<div class="row">
+		<div class="col-sm-12 col-xs-12" style="text-align: center;">
+			<button type="button" id="multidetail" class="btn btn-primary"/>MERGE</button></a>
+			<button id="submit" type="button" class="btn btn-default" onclick="javascript:history.back()"/>BACK</button>
+			<a href="/"><button type="button" id="home" class="btn btn-default"/>HOME</button></a>
+		</div>
+	</div>
